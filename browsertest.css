@@ -3,3 +3,8 @@
   border: 1px solid black;
   min-height: 450px;
 }
+
+h2, p {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 400;
+}
