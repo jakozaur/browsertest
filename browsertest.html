@@ -4,32 +4,54 @@
 </head>
 
 <body>
-  {{> title}}
-  <div class="row">
-    <div class="col-md-6 col-lg-6 browserView">
-      {{> browserView}}
+  <div class="container">
+    {{> navigation}}
+    {{> title}}
+    <div class="row">
+      <div class="col-md-6 col-lg-6 browserView">
+        {{> browserView}}
+      </div>
+      <div class="col-md-6 col-lg-6 code">
+        {{> code}}
+      </div>
     </div>
-    <div class="col-md-6 col-lg-6 code">
-      {{> code}}
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-      {{> consoleLogs}}
+    <div class="row">
+      <div class="col-md-6">
+        {{> consoleLogs}}
+      </div>
     </div>
   </div>
 </body>
 
+<template name="navigation">
+  <nav class="navbar navbar-default" role="navigation">
+      <button class="navbar-toggle" data-toggle="collapse" data-target="#upper-navbar">
+        <span class="sr-only"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand">Browser test</a>
+      </div>
+      <div id="#upper-navbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active"><a href="#">Testing console</a></li>
+          <li><a href="#">My tests</a></li>
+          <li><a href="#">Log out</a></li> 
+        </ul>
+      </div>
+    </div>
+  </nav>
+</template>
+
 <template name="title">
   <h2>Write and execute your Selenium tests easily
-  <small>made with love by <a href="https://twitter.com/jakozaur" target="_blank">@jakozaur</a> and <a href="https://twitter.com/GosiaMigdal" target="_blank">@GosiaMigdal</a></small></h2>
-</template>
+  <small>made with love by <a href="https://twitter.com/jakozaur" target="_blank">@jakozaur</a> and <a href="https://twitter.com/GosiaMigdal" target="_blank">@GosiaMigdal</a></small></h2></template>
 
 <template name="browserView"></template>
-
-<template name="code">
-</template>
-
+<template name="code"></template>
 <template name="consoleLogs"><p>Console logs</p></template>
 
 

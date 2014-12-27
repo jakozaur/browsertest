@@ -8,3 +8,8 @@ h2, p {
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 400;
 }
+
+.container {
+  padding-right: 0px!important;
+  padding-left: 0px!important;
+}
