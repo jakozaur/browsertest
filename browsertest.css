@@ -89,6 +89,14 @@ img {
   margin-bottom: 60px;
 }
 
+.buttons button {
+  padding: 5px 15px;
+  margin-top: 5px;
+}
+
+.buttons-2 {
+  padding-left: 0px!important;
+}
 
 
 
