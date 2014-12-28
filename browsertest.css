@@ -1,8 +1,29 @@
 /* Fonts */
 
-h2, p, nav {
+h2, p, nav, h4 {
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 400;
+}
+
+.description h4 {
+  text-align: justify;
+  font-weight: 300;
+}
+
+hr {
+  color: #777;
+  background-color: #777;
+  height: 1px;
+}
+
+.center h4 {
+  color: #777;
+}
+
+h3 {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 300;
+    line-height: 140%;
 }
 
 .navbar-brand {
@@ -21,6 +42,53 @@ h2, p, nav {
   border: 1px solid black;
   min-height: 450px;
 }
+
+.center {
+  margin: 0 auto;
+  width: 70%;
+  padding-top: 10px;
+}
+
+.signUp {
+  margin: 0 auto;
+  width: 25%;
+  margin-top: 50px;
+}
+
+.screenshot {
+  margin: 0 auto;
+  width: 50%;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.centered {
+  margin: 0 auto;
+  width: 25%;
+  margin-bottom: 20px;
+}
+
+.centered-2 {
+  margin: 0 auto;
+  width: 50%;
+  margin-bottom: 25px;
+}
+
+.signUp button {
+  padding: 10px 20px;
+  font-size: 130%;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+img {
+  border: 1px solid #777;
+}
+
+.info {
+  margin-bottom: 60px;
+}
+
+
 
 
 
