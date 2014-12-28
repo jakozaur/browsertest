@@ -116,7 +116,12 @@ input[type=checkbox] {
   border: 1px solid black;
 }
 
-
+@media (max-width: 680px) {
+    .screenshot img {
+        width: 300px;
+        margin-left: -40px;
+    }
+}
 
 
 
