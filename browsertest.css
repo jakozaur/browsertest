@@ -46,6 +46,7 @@ span {
 }
 
 .browserView, .code {
+  padding: 0;
   border: 1px solid black;
   min-height: 450px;
 }
@@ -127,7 +128,6 @@ img {
 input[type=checkbox] {
   margin-right: 20px;
 }
-/* Media Queries */
 
 @media (max-width: 680px) {
     .screenshot img {
@@ -135,5 +135,3 @@ input[type=checkbox] {
         margin-left: -40px;
     }
 }
-
-

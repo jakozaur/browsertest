@@ -34,14 +34,16 @@
         <ul class="nav navbar-nav navbar-right">
           <li class="active"><a href="#">Testing console</a></li>
           <li><a href="#">My tests</a></li>
-          <li><a href="#">Log out</a></li> 
+          <li><a href="#">Log out</a></li>
         </ul>
       </div>
     </div>
   </nav>
 </template>
 
-<template name="browserView"></template>
+<template name="browserView">
+  {{> noVNC}}
+</template>
 <template name="code"></template>
 <template name="consoleLogs"><p>Console logs</p></template>
 
@@ -51,15 +53,3 @@
     <button class="btn btn-small btn-primary" type="button">Save</button>
   </div>
 </template>
-
-
-
-
-
-
-
-
-
-
-
-
