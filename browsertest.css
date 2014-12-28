@@ -54,6 +54,7 @@ span {
   margin: 0 auto;
   width: 70%;
   padding-top: 10px;
+  text-align: center;
 }
 
 .signUp {
@@ -101,7 +102,7 @@ img {
 }
 
 .container-fluid {
-  width: 100%!important;
+  width: 100%;
 }
 
 .description {
@@ -134,8 +135,5 @@ input[type=checkbox] {
         margin-left: -40px;
     }
 }
-
-
-
 
 
