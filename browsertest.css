@@ -83,6 +83,7 @@ h3 {
 
 img {
   border: 1px solid #777;
+  margin-bottom: 15px;
 }
 
 .info {
@@ -99,7 +100,11 @@ img {
 }
 
 .container-fluid {
-  width: 100%;
+  width: 100%!important;
+}
+
+.description {
+  margin-bottom: 15px;
 }
 
 /* Lists */
@@ -117,9 +122,7 @@ input[type=checkbox] {
   border: 1px solid black;
 }
 
-.container.resized {
 
-}
 
 
 
