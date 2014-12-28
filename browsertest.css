@@ -26,6 +26,13 @@ h3 {
     line-height: 140%;
 }
 
+span {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 300;
+    line-height: 140%;
+    font-size: 23px;
+}
+
 .navbar-brand {
   font-family: 'Ubuntu', sans-serif;
   font-weight: 500;
@@ -99,6 +106,11 @@ img {
 
 .description {
   margin-bottom: 15px;
+}
+
+.tests button {
+  margin-left: 25px;
+  padding: 5px 20px;
 }
 
 /* Lists */
