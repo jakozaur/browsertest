@@ -107,14 +107,14 @@ img {
   list-style-type: none;
 }
 
-input[type=checkbox] {
-  margin-right: 20px;
-  border: 3px solid black;
+.tests ul {
+  padding-left: 0px;
 }
 
-#checkToRun {
-  border: 1px solid black;
+input[type=checkbox] {
+  margin-right: 20px;
 }
+/* Media Queries */
 
 @media (max-width: 680px) {
     .screenshot img {

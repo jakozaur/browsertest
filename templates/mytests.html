@@ -1,17 +1,20 @@
 <template name="mytests">
   <div class="container">
     {{> navigation}}
-      <h3>My tests created so far</h3>
-        <button class="btn btn-small btn-success" type="button">Run</button>
-        <button class="btn btn-small btn-primary" type="button">Delete</button>
-  {{> tests}}
+    {{> tests}}
   </div>
 </template>
 
 <template name="tests">
   <div class="tests">
+    <h3>My tests created so far</h3>
+      <button class="btn btn-small btn-success" type="button">Run</button>
+      <button class="btn btn-small btn-primary" type="button">Delete</button>
     <ul>
-      <li><h4><input type="checkbox" id="checkToRun"/>My awesome test</h4></li>
+      <li>
+        <input type="checkbox" id="c1" name="cc" />
+        <label for="c1"><h4>My awesome test</h4></label>
+      </li>
     </ul>
   </div>
 </template>
