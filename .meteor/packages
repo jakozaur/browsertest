@@ -10,3 +10,4 @@ insecure
 twbs:bootstrap
 iron:router
 jakozaur:novnc
+perak:codemirror

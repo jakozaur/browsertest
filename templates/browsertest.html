@@ -42,9 +42,14 @@
 </template>
 
 <template name="browserView">
-  {{> noVnc password='empty'}}
+  {{> noVnc password="empty"}}
 </template>
-<template name="code"></template>
+
+<template name="code">
+  {{> CodeMirror id="seleniumCode" name="seleniumCode"
+    options=options code=exampleCode}}
+</template>
+
 <template name="consoleLogs"><p>Console logs</p></template>
 
 <template name="buttons">

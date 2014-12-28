@@ -21,16 +21,16 @@ hr {
 }
 
 h3 {
-    font-family: 'Ubuntu', sans-serif;
-    font-weight: 300;
-    line-height: 140%;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 300;
+  line-height: 140%;
 }
 
-span {
-    font-family: 'Ubuntu', sans-serif;
-    font-weight: 300;
-    line-height: 140%;
-    font-size: 23px;
+.tests span {
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 300;
+  line-height: 140%;
+  font-size: 23px;
 }
 
 .navbar-brand {
@@ -134,4 +134,8 @@ input[type=checkbox] {
         width: 300px;
         margin-left: -40px;
     }
+}
+
+.CodeMirror {
+  height: 100%;
 }
