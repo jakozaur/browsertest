@@ -1,49 +1,64 @@
 <template name="browsertest">
-  {{> navigation}}
-  <button class="btn btn-small recording" type="button">Start recording</button>
-  <div class="container-margin">
-    <div class="row">
-      <div class="col-md-6 col-lg-6 browserView">
-        {{> browserView}}
+    {{> navigation}}
+    {{> popUp}}
+    <button class="btn btn-small recording" type="button">Start recording</button>
+    <div class="container-margin">
+      <div class="row">
+        <div class="col-md-6 col-lg-6 browserView">
+          {{> browserView}}
+        </div>
+        <div class="col-md-6 col-lg-6 code">
+          {{> code}}
+        </div>
       </div>
-      <div class="col-md-6 col-lg-6 code">
-        {{> code}}
+      <div class="row">
+        <div class="col-xs-6 col-md-6 col-lg-6">
+          {{> buttons2}}
+          {{> consoleLogs}}
+        </div>
+        <div class="col-xs-6 col-md-6 col-lg-6 buttons-2">
+          {{> codeButtons}}
+        </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-6">
-        {{> buttons2}}
-        {{> consoleLogs}}
-      </div>
-      <div class="col-md-6 buttons-2">
-        {{> codeButtons}}
-      </div>
-    </div>
-  </div>
 </template>
 
 <template name="navigation">
-  <nav class="navbar navbar-default" role="navigation">
-    <button class="navbar-toggle" data-toggle="collapse" data-target="#upper-navbar">
-      <span class="sr-only"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand">Browser test</a>
-      </div>
-      <div id="#upper-navbar">
-        <ul class="nav navbar-nav navbar-right">
-          <li class="active"><a href="#">Testing console</a></li>
-          <li><a href="#">My tests</a></li>
-          <li><a href="#">Log out</a></li>
-        </ul>
-      </div>
+  <nav class="navbar navbar-default upper-navbar" role="navigation">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#browser-test-collapse">
+        <span class="sr-only"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand brand-name">Browser test</a>
     </div>
+    <div class="collapse navbar-collapse" id="browser-test-collapse">
+      <ul class="nav navbar-nav navbar-right user-bar">
+        <li class="active"><a href="#">Test console</a></li>
+        <li><a href="#">My tests</a></li>
+        <li><a href="#">Logout</a></li>
+      </ul>  
+    </div>             
   </nav>
 </template>
+
+
+<template name="popUp">
+  <div id="sharePopup">
+    <div id="content-1">
+      <h4>You can record your tests without having idea about Selenium. Just start the recording and perfom your tests manually. We will generate code in JavaScript (NightwatchJS) for you. You will see it on the right. You can save it and run whenever you would like!</h4>
+      <button class="btn" type="button">Next</button>
+    </div>
+    <div id="content-2">
+      <h4>Want to write your tests manually instead of recording them? Go ahead and write them in NightwatchJS in the editor. You can save them and run whenever you would like.</h4>
+      <button class="btn" type="button">Got it! Take me to the awesome!</button>
+    </div>
+    <div class="overlay"></div>
+  </div>
+</template>
+
 
 <template name="browserView">
   {{> noVnc password="empty"}}
@@ -68,3 +83,10 @@
     <button class="btn btn-small btn-primary" type="button">Save</button>
   </div>
 </template>
+
+
+
+
+
+
+

@@ -5,7 +5,13 @@ h2, p, nav, h4 {
   font-weight: 400;
 }
 
-h3 {
+#content-1 h4, #content-2 h4 {
+  text-align: justify;
+  line-height: 130%;
+}
+
+
+h3, nav a {
   font-family: 'Ubuntu', sans-serif;
   font-weight: 300;
   line-height: 140%;
@@ -96,6 +102,12 @@ hr {
   margin-bottom: 15px;
 }
 
+@media (max-width: 470px) {
+  #content-1 {
+    max-width: 350px;
+  }
+}
+
 /* Buttons */
 
 .signUp button {
@@ -168,3 +180,56 @@ img {
   border: 1px solid #777;
   margin-bottom: 15px;
 }
+
+
+/* Popup */
+
+
+#sharePopup #content-1 {
+  background-color: white;
+  border: 5px solid #939393;
+  border-radius: 5px;
+  display: block;
+  height: 250px;
+  left: 7%;
+  overflow: auto;
+  padding: 16px;
+  position: absolute;
+  top: 25%;
+  width: 428px;
+  z-index:1002;
+}
+
+#sharePopup #content-2 {
+  background-color: white;
+  border: 5px solid #939393;
+  border-radius: 5px;
+  display: none;
+  height: 250px;
+  left: 60%;
+  overflow: auto;
+  padding: 16px;
+  position: absolute;
+  top: 25%;
+  width: 305px;
+  z-index:1002;
+}
+
+#sharePopup .overlay {
+  background-color: black;
+  display: block;
+  height: 100%;
+  left: 0%;
+  -moz-opacity: 0.8;
+  opacity:.50;
+  position: fixed;
+  top: 0%;
+  width: 100%;
+  z-index: 1001;
+}
+
+
+
+
+
+
