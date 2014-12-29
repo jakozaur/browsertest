@@ -115,6 +115,19 @@ img {
   padding: 5px 20px;
 }
 
+button.recording {
+  margin-left: 15px;
+  margin-bottom: 5px;
+  background-color: #e7e7e7;
+  border: 1px solid #777;
+}
+
+button.recording:hover {
+  background-color: #D6D6D6;
+}
+
+/* once recording os on: background color D93925 */
+
 /* Lists */
 
 .tests ul li {
