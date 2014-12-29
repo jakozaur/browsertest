@@ -11,3 +11,4 @@ twbs:bootstrap
 iron:router
 jakozaur:novnc
 perak:codemirror
+ongoworks:dockerode
