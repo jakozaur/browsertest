@@ -23,3 +23,13 @@ module.exports = {\n\
 ";
   }
 });
+
+Template.code.created = function () {
+  this.autorun(function () {
+    var height = NoVnc.size.get().height;
+    if (height) {
+      $('.browserView').height(height + 'px');
+      $('.code').height(height + 'px');
+    }
+  });
+};

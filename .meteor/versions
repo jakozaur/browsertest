@@ -27,7 +27,7 @@ iron:location@1.0.6
 iron:middleware-stack@1.0.6
 iron:router@1.0.6
 iron:url@1.0.6
-jakozaur:novnc@0.5.0_1
+jakozaur:novnc@0.5.0_2
 jquery@1.0.2
 json@1.0.2
 launch-screen@1.0.1
