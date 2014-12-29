@@ -222,12 +222,11 @@ img {
   left: 0%;
   -moz-opacity: 0.8;
   opacity:.50;
-  position: absolute;
+  position: fixed;
   top: 0%;
   width: 100%;
   z-index: 1001;
 }
-
 
 
 
