@@ -1,5 +1,5 @@
 // TODO: Don't hardcode variables
-
+/*
 var certPath = '/Users/jacek/.boot2docker/certs/boot2docker-vm/';
 var fs = Npm.require('fs');
 
@@ -11,7 +11,7 @@ docker = new Docker({
   cert: fs.readFileSync(certPath + 'cert.pem'),
   key: fs.readFileSync(certPath + 'key.pem')
 });
-
+*/
 var createFile = function (containerId, filePath, fileContent) {
   var container = docker.getContainer(containerId);
 
