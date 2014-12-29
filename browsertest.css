@@ -102,6 +102,12 @@ hr {
   margin-bottom: 15px;
 }
 
+@media (max-width: 470px) {
+  #content-1 {
+    max-width: 350px;
+  }
+}
+
 /* Buttons */
 
 .signUp button {
@@ -184,13 +190,13 @@ img {
   border: 5px solid #939393;
   border-radius: 5px;
   display: block;
-  height: 35%;
+  height: 250px;
   left: 7%;
   overflow: auto;
   padding: 16px;
   position: absolute;
   top: 25%;
-  width: 35%;
+  width: 428px;
   z-index:1002;
 }
 
@@ -199,13 +205,13 @@ img {
   border: 5px solid #939393;
   border-radius: 5px;
   display: none;
-  height: 35%;
+  height: 250px;
   left: 60%;
   overflow: auto;
   padding: 16px;
   position: absolute;
   top: 25%;
-  width: 25%;
+  width: 305px;
   z-index:1002;
 }
 
