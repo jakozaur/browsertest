@@ -12,6 +12,7 @@
     </div>
     <div class="row">
       <div class="col-md-6">
+        {{> buttons2}}
         {{> consoleLogs}}
       </div>
       <div class="col-md-6 buttons-2">
@@ -53,7 +54,13 @@
     options=options code=exampleCode}}
 </template>
 
-<template name="consoleLogs"><p>Console logs</p></template>
+<template name="buttons2">
+  <div class="buttons2">
+    <button class="btn btn-small btn-primary" type="button">See screenshots</button>
+  </div>
+</template>
+
+<template name="consoleLogs"><div class="consoleLogs"><h4>Console logs</h4></div></template>
 
 <template name="buttons">
   <div class="buttons">

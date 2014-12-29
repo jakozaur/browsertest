@@ -38,6 +38,7 @@ h3 {
   font-weight: 500;
 }
 
+
 /* Elements */
 
 .container {
@@ -93,9 +94,13 @@ img {
   margin-bottom: 60px;
 }
 
-.buttons button {
+.buttons button, .buttons2 button {
   padding: 5px 15px;
   margin-top: 5px;
+}
+
+.buttons2 button {
+  margin-left: -15px;
 }
 
 .buttons-2 {
@@ -126,7 +131,8 @@ button.recording:hover {
   background-color: #D6D6D6;
 }
 
-/* once recording os on: background color D93925 */
+/* once recording os on: background color D93925. Name on the button will
+be: Stop recording; */
 
 /* Lists */
 
