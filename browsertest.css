@@ -5,32 +5,32 @@ h2, p, nav, h4 {
   font-weight: 400;
 }
 
-.description h4 {
-  text-align: justify;
-  font-weight: 300;
-}
-
-hr {
-  color: #777;
-  background-color: #777;
-  height: 1px;
-}
-
-.center h4 {
-  color: #777;
-}
-
 h3 {
   font-family: 'Ubuntu', sans-serif;
   font-weight: 300;
   line-height: 140%;
 }
 
+.description h4 {
+  font-weight: 300;
+  text-align: justify;
+}
+
+.center h4 {
+  color: #777;
+}
+
+hr {
+  background-color: #777;
+  color: #777;
+  height: 1px;
+}
+
 .tests span {
   font-family: 'Ubuntu', sans-serif;
   font-weight: 300;
-  line-height: 140%;
   font-size: 23px;
+  line-height: 140%;
 }
 
 .navbar-brand {
@@ -46,57 +46,68 @@ h3 {
   padding-left: 0px!important;
 }
 
+.container-margin {
+  margin: 0 15px;
+  padding: 0 15px;
+}
+
+.CodeMirror {
+  height: 100%;
+}
+
 .browserView, .code {
-  padding: 0;
   border: 1px solid black;
   min-height: 450px;
+  padding: 0;
 }
 
 .center {
   margin: 0 auto;
-  width: 70%;
   padding-top: 10px;
   text-align: center;
+  width: 70%;
 }
 
 .signUp {
   margin: 0 auto;
-  width: 25%;
   margin-top: 50px;
   margin-bottom: 40px;
+  width: 25%;
 }
 
 .screenshot {
   margin: 0 auto;
-  width: 50%;
   margin-top: 20px;
   margin-bottom: 50px;
+  width: 50%;
 }
 
 .centered-2 {
   margin: 0 auto;
-  width: 50%;
   margin-bottom: 25px;
-}
-
-.signUp button {
-  padding: 10px 20px;
-  font-size: 130%;
-  font-family: 'Ubuntu', sans-serif;
-}
-
-img {
-  border: 1px solid #777;
-  margin-bottom: 15px;
+  width: 50%;
 }
 
 .info {
   margin-bottom: 60px;
 }
 
+
+.description {
+  margin-bottom: 15px;
+}
+
+/* Buttons */
+
+.signUp button {
+  font-size: 130%;
+  font-family: 'Ubuntu', sans-serif;
+  padding: 10px 20px;
+}
+
 .buttons button, .buttons2 button {
-  padding: 5px 15px;
   margin-top: 5px;
+  padding: 5px 15px;
 }
 
 .buttons2 button {
@@ -107,29 +118,22 @@ img {
   padding-left: 0px!important;
 }
 
-.container-fluid {
-  width: 100%;
-}
-
-.description {
-  margin-bottom: 15px;
-}
-
 .tests button {
   margin-left: 25px;
   padding: 5px 20px;
 }
 
 button.recording {
-  margin-left: 15px;
-  margin-bottom: 5px;
   background-color: #e7e7e7;
   border: 1px solid #777;
+  margin-left: 15px;
+  margin-bottom: 5px;
 }
 
 button.recording:hover {
   background-color: #D6D6D6;
 }
+
 
 /* once recording os on: background color D93925. Name on the button will
 be: Stop recording; */
@@ -155,11 +159,7 @@ input[type=checkbox] {
     }
 }
 
-.container-margin {
-  margin: 0 15px;
-  padding: 0 15px;
-}
-
-.CodeMirror {
-  height: 100%;
+img {
+  border: 1px solid #777;
+  margin-bottom: 15px;
 }
