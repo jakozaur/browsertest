@@ -136,6 +136,11 @@ input[type=checkbox] {
     }
 }
 
+.container-margin {
+  margin: 0 15px;
+  padding: 0 15px;
+}
+
 .CodeMirror {
   height: 100%;
 }
