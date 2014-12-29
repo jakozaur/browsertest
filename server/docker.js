@@ -1,12 +1,10 @@
-// TODO: Don't hardcode variables
-
-var certPath = '/Users/jacek/.boot2docker/certs/boot2docker-vm/';
+var certPath = Meteor.settings.docker.certPath;
 var fs = Npm.require('fs');
 
 docker = new Docker({
-  protocol: 'https',
-  host: '192.168.59.103',
-  port: 2376,
+  protocol: Meteor.settings.docker.protocol,
+  host: Meteor.settings.docker.host,
+  port: Meteor.settings.docker.port,
   ca: fs.readFileSync(certPath + 'ca.pem'),
   cert: fs.readFileSync(certPath + 'cert.pem'),
   key: fs.readFileSync(certPath + 'key.pem')
