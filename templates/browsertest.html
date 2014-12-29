@@ -26,25 +26,23 @@
 </template>
 
 <template name="navigation">
-  <nav class="navbar navbar-default" role="navigation">
-    <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#upper-navbar">
-      <span class="sr-only"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand">Browser test</a>
-      </div>
-      <div id="#upper-navbar">
-        <ul class="nav navbar-nav navbar-right">
-          <li class="active"><a href="#">Testing console</a></li>
-          <li><a href="#">My tests</a></li>
-          <li><a href="#">Log out</a></li>
-        </ul>
-      </div>
+  <nav class="navbar navbar-default upper-navbar" role="navigation">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#browser-test-collapse">
+        <span class="sr-only"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand brand-name">Browser test</a>
     </div>
+    <div class="collapse navbar-collapse" id="browser-test-collapse">
+      <ul class="nav navbar-nav navbar-right user-bar">
+        <li class="active"><a href="#">Test console</a></li>
+        <li><a href="#">My tests</a></li>
+        <li><a href="#">Logout</a></li>
+      </ul>  
+    </div>             
   </nav>
 </template>
 

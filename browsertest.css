@@ -11,7 +11,7 @@ h2, p, nav, h4 {
 }
 
 
-h3 {
+h3, nav a {
   font-family: 'Ubuntu', sans-serif;
   font-weight: 300;
   line-height: 140%;
