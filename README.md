@@ -35,7 +35,7 @@ In new terminal tab: (any folder)
 ### VNC proxy setup
 In new Terminal tab: (in seperate folder)
 
-1. `git clone git@github.com:kanaka/noVNC.git`
+1. `git clone https://github.com/kanaka/noVNC.git`
 2. `cd noVNC`
 3. `./utils/launch.sh --vnc 192.168.59.103:5555`
   You may need to replace ip with one from `boot2docker ip`
@@ -43,7 +43,7 @@ In new Terminal tab: (in seperate folder)
 ### Setup the temporary package
 In new tab: (in seperate folder)
 
-1. `git clone git@github.com:jakozaur/meteor-dockerode.git`
+1. `git clone https://github.com/jakozaur/meteor-dockerode.git`
 2. `cd [meteor-app]`
 3. `mkdir packages`
 4. `ln -s ../meteor-dockerode packages/ongoworks:dockerrode`
