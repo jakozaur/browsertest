@@ -39,7 +39,7 @@ var execCommand = function (containerId, cmd, runId) {
   var stream = Meteor.wrapAsync(execCmd.start, execCmd)();
   if (runId) {
     stream.on('data', Meteor.bindEnvironment(function (msg) {
-      Run.update(runId, {$push: {logs: msg.toString('ascii')}});
+      Run.update(runId, {$push: {logs: msg.toString('utf-8')}});
     }));
   }
 }
