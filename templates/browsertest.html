@@ -75,7 +75,14 @@
   </div>
 </template>
 
-<template name="consoleLogs"><div class="consoleLogs"><h4>Console logs</h4></div></template>
+<template name="consoleLogs">
+  <div class="consoleLogs">
+    <h4>Console logs</h4>
+    {{#each logLines}}
+      {{line}} <br>
+    {{/each}}
+  </div>
+</template>
 
 <template name="codeButtons">
   <div class="buttons">

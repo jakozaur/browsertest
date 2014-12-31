@@ -26,7 +26,7 @@ var createFile = function (containerId, filePath, fileContent) {
   stream.end();
 };
 
-var execCommand = function (containerId, cmd) {
+var execCommand = function (containerId, cmd, runId) {
   var container = docker.getContainer(containerId);
 
   var execCmd = Meteor.wrapAsync(container.exec, container)({
@@ -37,7 +37,11 @@ var execCommand = function (containerId, cmd) {
   });
 
   var stream = Meteor.wrapAsync(execCmd.start, execCmd)();
-  stream.pipe(process.stdout);
+  if (runId) {
+    stream.on('data', Meteor.bindEnvironment(function (msg) {
+      Run.update(runId, {$push: {logs: msg.toString('ascii')}});
+    }));
+  }
 }
 
 exampleExec = function () {
@@ -54,6 +58,10 @@ exampleExec = function () {
 Meteor.methods({
   runCode: function (code) {
     console.log("runCode", code);
+    var runId = Run.insert({
+      code: code,
+      logs: []
+    });
 
     var containers = Meteor.wrapAsync(docker.listContainers, docker)();
     console.log("Running containers", containers);
@@ -68,7 +76,9 @@ Meteor.methods({
     console.log("Writing test");
     createFile(containerId, '/home/tests/examples/tests/test.js', code);
     console.log("Running test");
-    execCommand(containerId, ['bash', '-c', 'cd /home/tests; nightwatch .']);
+    execCommand(containerId, ['bash', '-c', 'cd /home/tests; nightwatch .'], runId);
     console.log("DONE");
+
+    return runId;
   }
 })
