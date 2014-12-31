@@ -39,8 +39,8 @@
         <li class="active"><a href="#">Test console</a></li>
         <li><a href="#">My tests</a></li>
         <li><a href="#">Logout</a></li>
-      </ul>  
-    </div>             
+      </ul>
+    </div>
   </nav>
 </template>
 
@@ -61,7 +61,7 @@
 
 
 <template name="browserView">
-  {{> noVnc password="empty"}}
+  {{> noVnc host="localhost" port="3000" password="empty"}}
 </template>
 
 <template name="code">
@@ -83,10 +83,3 @@
     <button class="btn btn-small btn-primary" type="button">Save</button>
   </div>
 </template>
-
-
-
-
-
-
-

@@ -12,3 +12,4 @@ iron:router
 jakozaur:novnc
 perak:codemirror
 ongoworks:dockerode
+jakozaur:websockify
