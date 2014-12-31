@@ -16,7 +16,7 @@ var createFile = function (containerId, filePath, fileContent) {
   var execCmd = Meteor.wrapAsync(container.exec, container)({
     AttachStdin: true,
     Tty: false,
-    Cmd: ['bash', '-c', 'cat > ' + filePath]
+    Cmd: ['su', '-', 'tests', '-c', 'cat > ' + filePath]
   });
 
   var stream = Meteor.wrapAsync(execCmd.start, execCmd)({
@@ -72,11 +72,11 @@ Meteor.methods({
     var containerId = containers[0].Id;
 
     console.log("Creating dir");
-    execCommand(containerId, ['mkdir', '-p', '/home/tests/examples/tests']);
+    execCommand(containerId, ['su', '-', 'tests', '-c', 'mkdir -p /home/tests/examples/tests']);
     console.log("Writing test");
     createFile(containerId, '/home/tests/examples/tests/test.js', code);
     console.log("Running test");
-    execCommand(containerId, ['bash', '-c', 'cd /home/tests; nightwatch .'], runId);
+    execCommand(containerId, ['su', '-', 'tests', '-c', 'cd /home/tests; nightwatch .'], runId);
     console.log("DONE");
 
     return runId;

@@ -6,7 +6,9 @@ Template.consoleLogs.helpers({
       logs = logs.join("");
       logs = ansi_up.escape_for_html(logs);
       logs = ansi_up.ansi_to_html(logs);
-      return logs.split("\n").join("\n<br>");
+      logs = logs.split("\n");
+      logs.shift();
+      return logs.join("\n<br>");
     } else {
       return "";
     }
