@@ -20,6 +20,7 @@
         {{#each menuItems}}
           {{> navigationMenuItem}}
         {{/each}}
+        <li>{{> loginButtons}}</li>
       </ul>
     </div>
   </nav>
@@ -28,9 +29,3 @@
 <template name="navigationMenuItem">
   <li class="{{cssClass}}"><a href="{{pathFor route=route}}">{{name}}</a></li>
 </template>
-
-
-      
-
-
-

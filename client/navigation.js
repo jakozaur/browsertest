@@ -1,8 +1,7 @@
 Template.navigation.helpers({
   menuItems: function () {
     return [{route: 'app', name: "Test console"},
-      {route: 'mytests', name: "My tests"},
-      {route: 'logout', name: "Logout"}];
+      {route: 'mytests', name: "My tests"}];
   }
 });
 
@@ -14,4 +13,4 @@ Template.navigationMenuItem.helpers({
       return '';
     }
   }
-}); 
+});
