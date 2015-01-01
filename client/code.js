@@ -5,8 +5,13 @@ Template.code.helpers({
       lineNumbers: true
     };
   },
-  exampleCode: function () {
-    return "\
+  currentCode: function () {
+    var testId = Router.current().params.testId;
+    if (testId) {
+      // TODO: handle if Test is not loaded
+      return Test.findOne(testId).code;
+    } else {
+      return "\
 module.exports = {\n\
   \"Demo test Google\" : function (browser) {\n\
     browser\n\
@@ -21,6 +26,7 @@ module.exports = {\n\
   }\n\
 };\n\
 ";
+    }
   }
 });
 
