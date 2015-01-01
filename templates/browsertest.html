@@ -40,10 +40,12 @@
   {{#if show}}
     <div class="popUp saveTestPopUp">
       <div id="pickTestName" class="dialog">
-        <label for="testNameInput">Pick test name</label>
+        <label for="testNameInput">Pick your test name</label>
         <input id="testNameInput" name="testName" type="text">
-        <button class="btn save" type="button">Save</button>
-        <button class="btn cancel" type="button">Cancel</button>
+        <div class="nameButtons">
+          <button class="btn save btn-small btn-primary" type="button">Save</button>
+          <button class="btn btn-small cancel" type="button">Cancel</button>
+        </div>
       </div>
       <div class="overlay"></div>
     </div>

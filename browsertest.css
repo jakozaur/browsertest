@@ -5,6 +5,15 @@ h2, p, nav, h4, .consoleLogs {
   font-weight: 400;
 }
 
+#pickTestName label {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  display: block;
+  margin: 0 auto;
+  width: 50%;
+}
+
 .container-margin h4 {
   margin-left: -15px;
 }
@@ -150,10 +159,22 @@ button.recording {
   margin-left: -15px;
 }
 
-button.recording:hover {
+button.recording:hover, button.cancel:hover {
   background-color: #D6D6D6;
 }
 
+button.cancel {
+  color: white;
+}
+
+.nameButtons {
+  margin: 0 auto;
+  width: 50%;
+}
+
+.nameButtons button {
+  margin-right: 15px;
+}
 
 /* once recording os on: background color D93925. Name on the button will
 be: Stop recording; */
@@ -184,8 +205,13 @@ img {
   margin-bottom: 15px;
 }
 
+#pickTestName input {
+  width: 358px;
+  margin: 25px 0px;
+  border: 2px solid #e7e7e7;
+}
 
-/* Popup */
+/* Popups */
 
 .popUp .dialog {
   background-color: white;
@@ -197,6 +223,11 @@ img {
   position: absolute;
   top: 25%;
   z-index:1002;
+}
+
+#pickTestName {
+  left: 30%;
+  width: 400px;
 }
 
 #popUp #intro1 {
@@ -221,6 +252,25 @@ img {
   z-index: 1001;
 }
 
+@media (max-width: 770px) {
+  #pickTestName {
+    left: 20%;
+  }
+}
+@media (max-width: 570px) {
+  #pickTestName {
+    width: 380px;
+    left: 2%;
+  }
+}
+
+@media (max-width: 570px) {
+  #pickTestName input {
+    width: 335px;
+  }
+}
+
+
 /* Login buttons */
 
 #login-buttons .login-button, .accounts-dialog .login-button {
@@ -244,3 +294,9 @@ img {
   margin: 0;
   padding: 0 15px;
 }
+
+
+
+
+
+
