@@ -1,8 +1,12 @@
 /* Fonts */
 
-h2, p, nav, h4 {
+h2, p, nav, h4, .consoleLogs {
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 400;
+}
+
+.container-margin h4 {
+  margin-left: -15px;
 }
 
 #intro1 h4, #intro2 h4 {
@@ -142,8 +146,8 @@ hr {
 button.recording {
   background-color: #e7e7e7;
   border: 1px solid #777;
-  margin-left: 15px;
   margin-bottom: 10px;
+  margin-left: -15px;
 }
 
 button.recording:hover {
@@ -240,7 +244,6 @@ img {
   margin: 0;
   padding: 0 15px;
 }
-
 
 
 
