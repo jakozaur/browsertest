@@ -5,6 +5,7 @@
       <span>My tests created so far</span>
       <button class="btn btn-small btn-success" type="button">Run</button>
       <button class="btn btn-small btn-primary" type="button">Delete</button>
+      <button class="btn btn btn-small btn-info edit" type="button">Edit</button>
       <ul>
         {{#each tests}}
           {{> myTestsItem}}
@@ -16,8 +17,8 @@
 
 <template name="myTestsItem">
   <li>
-    <input type="checkbox" id="{{_id}}" name="{{_id}}" />
+    <input type="radio" id="{{_id}}" name="{{_id}}" />
     <label for="{{_id}}"><h4>{{name}}</h4></label>
-    <button class="btn edit" type="button">Edit</button>
   </li>
 </template>
+

@@ -146,11 +146,6 @@ hr {
   padding: 5px 20px;
 }
 
-@media (max-width: 450px) {
-  .myTests button {
-    margin-left: 0px;
-  }
-}
 
 button.recording {
   background-color: #e7e7e7;
@@ -189,7 +184,7 @@ be: Stop recording; */
   padding-left: 0px;
 }
 
-input[type=checkbox] {
+input[type=radio] {
   margin-right: 20px;
 }
 
