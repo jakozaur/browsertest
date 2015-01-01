@@ -1,6 +1,7 @@
 <template name="browsertest">
     {{> navigation}}
     {{> popUp}}
+    {{> saveTestPopUp}}
     <div class="container-margin">
       <div class="row">
         <div class="col-md-6 col-lg-6">
@@ -35,17 +36,31 @@
     </div>
 </template>
 
+<template name="saveTestPopUp">
+  {{#if show}}
+    <div class="popUp saveTestPopUp">
+      <div id="pickTestName" class="dialog">
+        <label for="testNameInput">Pick test name</label>
+        <input id="testNameInput" name="testName" type="text">
+        <button class="btn save" type="button">Save</button>
+        <button class="btn cancel" type="button">Cancel</button>
+      </div>
+      <div class="overlay"></div>
+    </div>
+  {{/if}}
+</template>
+
 <template name="popUp">
   {{#if showWelcome}}
-    <div id="popUp">
+    <div id="popUp" class="popUp">
       {{#if showIntro1}}
-        <div id="intro1">
+        <div id="intro1" class="dialog">
           <h4>You can record your tests without having idea about Selenium. Just start the recording and perfom your tests manually. We will generate code in JavaScript (NightwatchJS) for you. You will see it on the right. You can save it and run whenever you would like!</h4>
           <button class="btn" type="button">Next</button>
         </div>
       {{/if}}
       {{#if showIntro2}}
-        <div id="intro2">
+        <div id="intro2" class="dialog">
           <h4>Want to write your tests manually instead of recording them? Go ahead and write them in NightwatchJS in the editor. You can save them and run whenever you would like.</h4>
           <button class="btn" type="button">Got it! Take me to the awesome!</button>
         </div>

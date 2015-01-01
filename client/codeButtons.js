@@ -11,15 +11,7 @@ Template.codeButtons.events({
     if (testId) {
       // TODO: update existing code
     } else {
-      // TODO: popup to get name
-      var name = "My awesome test";
-      var code = $('#seleniumCode').val();
-      var id = Test.insert({
-        userId: Meteor.userId(),
-        name: name,
-        code: code
-      });
-      Session.set('testId', id);
+      Session.set('saveTestPopUp', true);
     }
   }
 });
