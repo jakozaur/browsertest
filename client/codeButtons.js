@@ -5,5 +5,21 @@ Template.codeButtons.events({
     Meteor.call('runCode', code, function (error, runId) {
       Session.set('runId', runId);
     });
+  },
+  'click .save-code': function () {
+    var testId = Session.get('testId');
+    if (testId) {
+      // TODO: update existing code
+    } else {
+      // TODO: popup to get name
+      var name = "My awesome test";
+      var code = $('#seleniumCode').val();
+      var id = Test.insert({
+        userId: Meteor.userId(),
+        name: name,
+        code: code
+      });
+      Session.set('testId', id);
+    }
   }
 });

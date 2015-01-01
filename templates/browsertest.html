@@ -1,8 +1,18 @@
 <template name="browsertest">
     {{> navigation}}
     {{> popUp}}
-    <button class="btn btn-small recording" type="button">Start recording</button>
     <div class="container-margin">
+      <div class="row">
+        <div class="col-md-6 col-lg-6">
+          <button class="btn btn-small recording" type="button">Start recording</button>
+        </div>
+        <div class="col-md-6 col-lg-6">
+          {{#if testName}}
+            Test name: {{testName}}
+          {{/if}}
+        </div>
+      </div>
+
       <div class="row">
         <div class="col-md-6 col-lg-6 browserView">
           {{> browserView}}
@@ -11,6 +21,7 @@
           {{> code}}
         </div>
       </div>
+
       <div class="row">
         <div class="col-xs-6 col-md-6 col-lg-6">
           {{> buttons2}}
@@ -69,6 +80,6 @@
 <template name="codeButtons">
   <div class="buttons">
     <button class="btn btn-small btn-success run-code" type="button">Run</button>
-    <button class="btn btn-small btn-primary" type="button">Save</button>
+    <button class="btn btn-small btn-primary save-code" type="button">Save</button>
   </div>
 </template>
