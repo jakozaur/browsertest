@@ -42,6 +42,12 @@
       <div id="pickTestName" class="dialog">
         <label for="testNameInput">Pick your test name</label>
         <input id="testNameInput" name="testName" type="text">
+        {{#if error}}
+          <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            {{error}}
+        </div>
+        {{/if}}
         <div class="nameButtons">
           <button class="btn save btn-small btn-primary" type="button">Save</button>
           <button class="btn btn-small cancel" type="button">Cancel</button>

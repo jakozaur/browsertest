@@ -6,6 +6,11 @@ Template.popUp.events({
     Meteor.users.update(Meteor.userId(), {$set: {
       'profile.skipWelcome': true
     }});
+  },
+  'click .overlay': function () {
+    Meteor.users.update(Meteor.userId(), {$set: {
+      'profile.skipWelcome': true
+    }});
   }
 });
 
