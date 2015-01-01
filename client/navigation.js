@@ -1,7 +1,11 @@
 Template.navigation.helpers({
   menuItems: function () {
-    return [{route: 'app', name: "Test console"},
-      {route: 'mytests', name: "My tests"}];
+    if (Meteor.userId()) {
+      return [{route: 'app', name: "Test console"},
+        {route: 'mytests', name: "My tests"}];
+    } else {
+      return [];
+    }
   }
 });
 

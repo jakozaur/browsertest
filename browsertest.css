@@ -5,7 +5,7 @@ h2, p, nav, h4 {
   font-weight: 400;
 }
 
-#content-1 h4, #content-2 h4 {
+#intro1 h4, #intro2 h4 {
   text-align: justify;
   line-height: 130%;
 }
@@ -102,7 +102,7 @@ hr {
 }
 
 @media (max-width: 470px) {
-  #content-1 {
+  #intro1 {
     max-width: 350px;
   }
 }
@@ -183,40 +183,30 @@ img {
 
 /* Popup */
 
-
-#sharePopup #content-1 {
+#popUp #intro1, #popUp #intro2 {
   background-color: white;
   border: 5px solid #939393;
   border-radius: 5px;
-  display: block;
   height: 250px;
+  overflow: auto;
+  padding: 16px;
+  position: absolute;
+  top: 25%;
+  z-index:1002;
+}
+
+#popUp #intro1 {
   left: 7%;
-  overflow: auto;
-  padding: 16px;
-  position: absolute;
-  top: 25%;
   width: 428px;
-  z-index:1002;
 }
 
-#sharePopup #content-2 {
-  background-color: white;
-  border: 5px solid #939393;
-  border-radius: 5px;
-  display: none;
-  height: 250px;
+#popUp #intro2 {
   left: 60%;
-  overflow: auto;
-  padding: 16px;
-  position: absolute;
-  top: 25%;
   width: 305px;
-  z-index:1002;
 }
 
-#sharePopup .overlay {
+#popUp .overlay {
   background-color: black;
-  display: block;
   height: 100%;
   left: 0%;
   -moz-opacity: 0.8;
@@ -227,24 +217,30 @@ img {
   z-index: 1001;
 }
 
+/* Login buttons */
+
 #login-buttons .login-button, .accounts-dialog .login-button {
-  font-size: 100%;
-  padding: 15px;
   background: #337ab7;
-  font-family: inherit;
   border: none;
+  font-family: inherit;
+  font-size: 100%;
   line-height: 20px;
+  padding: 15px;
 }
 
 #login-buttons .login-image {
-  top: 15px;
   left: 10px;
+  top: 15px;
 }
 
 #login-buttons .login-display-name {
-  padding: 0 15px;
-  margin: 0;
-  line-height: 20px;
-  font-family: 'Ubuntu', sans-serif;
   color: #555;
+  font-family: 'Ubuntu', sans-serif;
+  line-height: 20px;
+  margin: 0;
+  padding: 0 15px;
 }
+
+
+
+
