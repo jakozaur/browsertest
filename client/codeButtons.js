@@ -7,7 +7,7 @@ Template.codeButtons.events({
     });
   },
   'click .save-code': function () {
-    var testId = Session.get('testId');
+    var testId = Router.current().params.testId;
     if (testId) {
       Test.update(testId, {$set: {
         code: $('#seleniumCode').val()

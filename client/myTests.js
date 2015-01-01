@@ -10,7 +10,6 @@ Template.myTests.helpers({
 
 Template.myTestsItem.events({
   'click .edit': function () {
-    Session.set('testId', this._id);
-    Router.go('app');
+    Router.go('app.testId', {testId: this._id})
   }
 });
