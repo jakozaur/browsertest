@@ -9,7 +9,9 @@ Template.codeButtons.events({
   'click .save-code': function () {
     var testId = Session.get('testId');
     if (testId) {
-      // TODO: update existing code
+      Test.update(testId, {$set: {
+        code: $('#seleniumCode').val()
+      }});
     } else {
       Session.set('saveTestPopUp', true);
     }

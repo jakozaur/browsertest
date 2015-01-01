@@ -45,7 +45,7 @@ hr {
   height: 1px;
 }
 
-.tests span {
+.myTests span {
   font-family: 'Ubuntu', sans-serif;
   font-weight: 300;
   font-size: 23px;
@@ -141,13 +141,13 @@ hr {
   padding-left: 0px!important;
 }
 
-.tests button {
+.myTests button {
   margin-left: 25px;
   padding: 5px 20px;
 }
 
 @media (max-width: 450px) {
-  .tests button {
+  .myTests button {
     margin-left: 0px;
   }
 }
@@ -181,11 +181,11 @@ be: Stop recording; */
 
 /* Lists */
 
-.tests ul li {
+.myTests ul li {
   list-style-type: none;
 }
 
-.tests ul {
+.myTests ul {
   padding-left: 0px;
 }
 

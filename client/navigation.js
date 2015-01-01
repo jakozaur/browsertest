@@ -2,7 +2,7 @@ Template.navigation.helpers({
   menuItems: function () {
     if (Meteor.userId()) {
       return [{route: 'app', name: "Test console"},
-        {route: 'mytests', name: "My tests"}];
+        {route: 'myTests', name: "My tests"}];
     } else {
       return [];
     }

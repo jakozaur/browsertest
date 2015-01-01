@@ -1,20 +1,23 @@
-<template name="mytests">
+<template name="myTests">
   {{> navigation}}
   <div class="container">
-  {{> tests}}
+    <div class="myTests">
+      <span>My tests created so far</span>
+      <button class="btn btn-small btn-success" type="button">Run</button>
+      <button class="btn btn-small btn-primary" type="button">Delete</button>
+      <ul>
+        {{#each tests}}
+          {{> myTestsItem}}
+        {{/each}}
+      </ul>
+    </div>
   </div>
 </template>
 
-<template name="tests">
-  <div class="tests">
-    <span>My tests created so far</span>
-    <button class="btn btn-small btn-success" type="button">Run</button>
-    <button class="btn btn-small btn-primary" type="button">Delete</button>
-    <ul>
-      <li>
-        <input type="checkbox" id="c1" name="cc" />
-        <label for="c1"><h4>My awesome test</h4></label>
-      </li>
-    </ul>
-  </div>
+<template name="myTestsItem">
+  <li>
+    <input type="checkbox" id="{{_id}}" name="{{_id}}" />
+    <label for="{{_id}}"><h4>{{name}}</h4></label>
+    <button class="btn edit" type="button">Edit</button>
+  </li>
 </template>
