@@ -1,7 +1,8 @@
 Template.navigation.helpers({
   menuItems: function () {
     if (Meteor.userId()) {
-      return [{route: 'app', name: "Test console"},
+      return [
+        {route: 'app', name: "Test console", alternativeRoutes: ['app.testId']},
         {route: 'myTests', name: "My tests"}];
     } else {
       return [];
@@ -11,7 +12,9 @@ Template.navigation.helpers({
 
 Template.navigationMenuItem.helpers({
   cssClass: function () {
-    if (Router.current() && Router.current().route.getName() === this.route) {
+    var name = Router.current() && Router.current().route.getName();
+    if (name === this.route ||
+        _.indexOf(this.alternativeRoutes || [], name) !== -1) {
       return 'active';
     } else {
       return '';
