@@ -86,6 +86,9 @@ Meteor.methods({
 
   recordTest: function () {
     console.log("recordTest");
+
+    var recordingId = Recording.insert({events: []});
+
     var codeLaunchBrowser = "module.exports = {\n\
   \"Launch browser\" : function (browser) {\n\
     browser\n\
@@ -111,15 +114,18 @@ Meteor.methods({
     console.log("recordTest Copying chrome extension");
     execCommand(containerId, ['su', '-', 'tests', '-c',
       'mkdir -p /home/tests/record/extension']);
-    _.each(['background.js', 'foreground.js', 'manifest.json', 'settings.js'], function (el) {
+    _.each(['background.js', 'foreground.js', 'manifest.json'], function (el) {
       createFile(containerId, '/home/tests/record/extension/' + el,
         Assets.getText('chrome-extension/' + el));
     });
 
-
-
-
-    // TODO: copy settings to extension
+    console.log("recordTest Copying chrome settings");
+    var settings = "Settings = " + JSON.stringify({
+      meteorUrl: Meteor.settings.meteor.localUrl,
+      testId: recordingId
+    }) + ";";
+    createFile(containerId, '/home/tests/record/extension/settings.js',
+      settings);
 
     console.log("recordTest Writing custom nightwatch.js settings");
     createFile(containerId, '/home/tests/record-settings.json',
