@@ -134,6 +134,8 @@ Meteor.methods({
     console.log("recordTest Running test");
     execCommand(containerId, ['su', '-', 'tests', '-c',
       'cd /home/tests; nightwatch -c record-settings.json']);
+    execCommand(containerId, ['su', '-', 'tests', '-c',
+      'sleep 1; DISPLAY=:123 xdotool search --onlyvisible --class chrome windowfocus']);
     console.log("recordTest DONE");
   }
 })

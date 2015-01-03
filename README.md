@@ -28,7 +28,7 @@ In new terminal tab: (any folder)
 ```
 4. `boot2docker ssh`
 5. `docker pull jakozaur/docker-selenium:v1.1`
-6. `docker run -p 4444:4444 -p 5555:5555 -d jakozaur/docker-selenium:v1.1`
+6. `docker run -p 4444:4444 -p 5555:5555 -d jakozaur/docker-selenium:v1.2`
 7. Verify with `docker logs [id-from-previous-step]`
 
 
