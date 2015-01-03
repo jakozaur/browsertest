@@ -116,8 +116,10 @@ Meteor.methods({
     console.log("recordTest Starting Chrome");
     execCommand(containerId, ['su', '-', 'tests', '-c',
       'DISPLAY=:123 google-chrome --window-position=0,0 --window-size=1366,768 ' +
-      '--no-first-run --no-default-browser-check --disable-infobars --disable-manager-for-sync-signin ' +
-      '--no-default-browser-check --load-extension=/home/tests/record/extension ""']);
+      '--no-first-run --no-default-browser-check --disable-infobars ' +
+      '--disable-manager-for-sync-signin ' +
+      '--disable-gpu ' +
+      '--load-extension=/home/tests/record/extension ""']);
     execCommand(containerId, ['su', '-', 'tests', '-c',
       'sleep 1; DISPLAY=:123 xdotool search --onlyvisible --class chrome windowfocus']);
     console.log("recordTest DONE");
