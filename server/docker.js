@@ -89,13 +89,6 @@ Meteor.methods({
 
     var recordingId = Recording.insert({events: []});
 
-    var codeLaunchBrowser = "module.exports = {\n\
-  \"Launch browser\" : function (browser) {\n\
-    browser\n\
-      .url('')\n\
-  }\n\
-};"
-
     var containers = Meteor.wrapAsync(docker.listContainers, docker)();
     console.log("Running containers", containers);
     if (containers.length == 0) {
@@ -103,13 +96,6 @@ Meteor.methods({
       return;
     }
     var containerId = containers[0].Id;
-
-    console.log("recordTest Creating dir");
-    execCommand(containerId, ['su', '-', 'tests', '-c',
-      'mkdir -p /home/tests/record/tests']);
-
-    console.log("recordTest Writing test");
-    createFile(containerId, '/home/tests/record/tests/test.js', codeLaunchBrowser);
 
     console.log("recordTest Copying chrome extension");
     execCommand(containerId, ['su', '-', 'tests', '-c',
@@ -127,13 +113,11 @@ Meteor.methods({
     createFile(containerId, '/home/tests/record/extension/settings.js',
       settings);
 
-    console.log("recordTest Writing custom nightwatch.js settings");
-    createFile(containerId, '/home/tests/record-settings.json',
-      Assets.getText('nightwatch/record-settings.json'));
-
-    console.log("recordTest Running test");
+    console.log("recordTest Starting Chrome");
     execCommand(containerId, ['su', '-', 'tests', '-c',
-      'cd /home/tests; nightwatch -c record-settings.json']);
+      'DISPLAY=:123 google-chrome --window-position=0,0 --window-size=1366,768 ' +
+      '--no-first-run --no-default-browser-check --disable-infobars --disable-manager-for-sync-signin ' +
+      '--no-default-browser-check --load-extension=/home/tests/record/extension ""']);
     execCommand(containerId, ['su', '-', 'tests', '-c',
       'sleep 1; DISPLAY=:123 xdotool search --onlyvisible --class chrome windowfocus']);
     console.log("recordTest DONE");
