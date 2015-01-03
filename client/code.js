@@ -1,17 +1,8 @@
+codeMirror = {};
+
 Template.code.helpers({
-  options: function () {
-    return {
-      mode: 'javascript',
-      lineNumbers: true
-    };
-  },
   currentCode: function () {
-    var testId = Router.current().params.testId;
-    if (testId) {
-      // TODO: handle if Test is not loaded
-      return Test.findOne(testId).code;
-    } else {
-      return "\
+    return "\
 module.exports = {\n\
   \"Demo test Google\" : function (browser) {\n\
     browser\n\
@@ -26,7 +17,6 @@ module.exports = {\n\
   }\n\
 };\n\
 ";
-    }
   }
 });
 
@@ -36,6 +26,24 @@ Template.code.created = function () {
     if (height) {
       $('.browserView').height(height + 'px');
       $('.code').height(height + 'px');
+    }
+  });
+};
+
+Template.code.rendered = function () {
+  var self = this;
+  codeMirror = CodeMirror.fromTextArea(this.find("#seleniumCode"), {
+    mode: 'javascript',
+    lineNumbers: true
+  });
+
+  self.autorun(function () {
+    var testId = Router.current().params.testId;
+    if (!codeMirror.hasFocus() && testId) {
+      var test = Test.findOne(testId);
+      if (test) {
+        codeMirror.setValue(test.code);
+      }
     }
   });
 };

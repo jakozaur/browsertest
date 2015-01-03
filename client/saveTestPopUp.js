@@ -11,7 +11,7 @@ Template.saveTestPopUp.helpers({
 Template.saveTestPopUp.events({
   'click .save': function () {
     var name = $('#testNameInput').val();
-    var code = $('#seleniumCode').val();
+    var code = codeMirror.getValue();
     if (name.length == 0) {
       Session.set('saveTestPopUpError', "Please enter the name");
       return;

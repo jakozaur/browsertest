@@ -18,7 +18,7 @@
         <div class="col-md-6 col-lg-6 browserView">
           {{> browserView}}
         </div>
-        <div class="col-md-6 col-lg-6 code">          
+        <div class="col-md-6 col-lg-6 code">
           {{> code}}
         </div>
       </div>
@@ -83,8 +83,7 @@
 </template>
 
 <template name="code">
-  {{> CodeMirror id="seleniumCode" name="seleniumCode"
-    options=options code=currentCode}}
+  <textarea id="seleniumCode" name="seleniumCode">{{currentCode}}</textarea>
 </template>
 
 <template name="buttons2">
