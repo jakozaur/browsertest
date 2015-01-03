@@ -41,6 +41,8 @@ var execCommand = function (containerId, cmd, runId) {
     stream.on('data', Meteor.bindEnvironment(function (msg) {
       Run.update(runId, {$push: {logs: msg.toString('utf-8')}});
     }));
+  } else {
+    stream.pipe(process.stdout);
   }
 }
 
@@ -80,5 +82,52 @@ Meteor.methods({
     console.log("DONE");
 
     return runId;
+  },
+
+  recordTest: function () {
+    console.log("recordTest");
+    var codeLaunchBrowser = "module.exports = {\n\
+  \"Launch browser\" : function (browser) {\n\
+    browser\n\
+      .url('')\n\
+  }\n\
+};"
+
+    var containers = Meteor.wrapAsync(docker.listContainers, docker)();
+    console.log("Running containers", containers);
+    if (containers.length == 0) {
+      console.log("ERROR: need one container");
+      return;
+    }
+    var containerId = containers[0].Id;
+
+    console.log("recordTest Creating dir");
+    execCommand(containerId, ['su', '-', 'tests', '-c',
+      'mkdir -p /home/tests/record/tests']);
+
+    console.log("recordTest Writing test");
+    createFile(containerId, '/home/tests/record/tests/test.js', codeLaunchBrowser);
+
+    console.log("recordTest Copying chrome extension");
+    execCommand(containerId, ['su', '-', 'tests', '-c',
+      'mkdir -p /home/tests/record/extension']);
+    _.each(['background.js', 'foreground.js', 'manifest.json', 'settings.js'], function (el) {
+      createFile(containerId, '/home/tests/record/extension/' + el,
+        Assets.getText('chrome-extension/' + el));
+    });
+
+
+
+
+    // TODO: copy settings to extension
+
+    console.log("recordTest Writing custom nightwatch.js settings");
+    createFile(containerId, '/home/tests/record-settings.json',
+      Assets.getText('nightwatch/record-settings.json'));
+
+    console.log("recordTest Running test");
+    execCommand(containerId, ['su', '-', 'tests', '-c',
+      'cd /home/tests; nightwatch -c record-settings.json']);
+    console.log("recordTest DONE");
   }
 })

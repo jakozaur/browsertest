@@ -1,4 +1,4 @@
 Settings = {
-  meteorUrl: 'http://localhost:3000',
+  meteorUrl: 'http://192.168.59.3:3000',
   testId: 'exampleTestId'
 };

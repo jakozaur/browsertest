@@ -9,3 +9,9 @@ Template.browsertest.helpers({
     }
   }
 });
+
+Template.browsertest.events({
+  'click .recording': function () {
+    Meteor.call('recordTest');
+  }
+});
