@@ -1,19 +1,46 @@
-window.addEventListener('click', function (event) {
-  console.log("BrowserTest click", event);
-  var exported = {
-    x: event.x,
-    y: event.y
-  };
-  // TODO: export rest of interesting properties
-  chrome.runtime.sendMessage(['click', exported]);
-}, true);
+(function () {
+  var exportPath = function (event) {
+    var result = [];
+    var node = event.target;
+    while (node) {
+      var childIndex = undefined;
+      if (node.parentNode) {
+        childIndex = Array.prototype.indexOf.call(node.parentNode.children, node);
+      }
+      result.push({
+        id: node.id,
+        className: node.className,
+        tagName: node.tagName,
+        childIndex: childIndex
+      });
+      node = node.parentNode;
+    }
+    return result;
+  }
 
-window.addEventListener('keydown', function (event) {
-  console.log("BrowserTest keydown", event);
-  var exported = {
-    charCode: event.charCode,
-    keyIdentifier: event. keyIdentifier
-  };
-  // TODO: export rest of interesting properties
-  chrome.runtime.sendMessage(['keydown', exported]);
-}, true);
+  var log = function () {};
+  // log = console.log
+
+  window.addEventListener('click', function (event) {
+    log("BrowserTest click", event);
+    var exported = {
+      type: 'click',
+      x: event.x,
+      y: event.y,
+      path: exportPath(event)
+    };
+    console.log(exported);
+    chrome.runtime.sendMessage(exported);
+  }, true);
+
+  window.addEventListener('keydown', function (event) {
+    log("BrowserTest keydown", event);
+    var exported = {
+      type: 'keydown',
+      charCode: event.charCode,
+      keyIdentifier: event.keyIdentifier,
+      path: exportPath(event)
+    };
+    chrome.runtime.sendMessage(exported);
+  }, true);
+}());
