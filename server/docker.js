@@ -61,6 +61,7 @@ Meteor.methods({
   runCode: function (code) {
     console.log("runCode", code);
     var runId = Run.insert({
+      userId: Meteor.userId(),
       code: code,
       logs: []
     });
@@ -89,7 +90,10 @@ Meteor.methods({
   recordTest: function () {
     console.log("recordTest");
 
-    var recordingId = Recording.insert({events: []});
+    var recordingId = Recording.insert({
+      userId: Meteor.userId(),
+      events: []
+    });
 
     var containers = Meteor.wrapAsync(docker.listContainers, docker)();
     console.log("Running containers", containers);
@@ -140,7 +144,7 @@ Meteor.methods({
       return;
     }
     var containerId = containers[0].Id;
-    
+
     console.log("stopChrome Close Chrome");
     execCommand(containerId, ['killall', 'chrome']);
   }
