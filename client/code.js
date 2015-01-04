@@ -51,7 +51,8 @@ Template.code.rendered = function () {
     } else if (recordingId) {
       var recording = Recording.findOne(recordingId) || {};
       var events = recording.events || [];
-      var code = _.map(events, JSON.stringify).join("\n");
+      var gen = new CodeGen();
+      var code = gen.eventsToNightwatch(events);
       codeMirror.setOption('readOnly', true);
       codeMirror.setOption('theme', 'base16-light');
       codeMirror.setValue(code);
