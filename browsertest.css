@@ -156,10 +156,6 @@ button.start-recording {
   background-color: #e7e7e7;
 }
 
-button.stop-recording {
-  background-color: #D45F50;
-}
-
 button.start-recording:hover, button.cancel:hover {
   background-color: #D6D6D6;
 }
