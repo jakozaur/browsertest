@@ -2,6 +2,8 @@
     {{> navigation}}
     {{> popUp}}
     {{> saveTestPopUp}}
+    {{> examplesPopUp}}
+
     <div class="container-margin">
       <div class="row">
         <div class="col-md-6 col-lg-6">
@@ -107,5 +109,22 @@
   <div class="buttons">
     <button class="btn btn-small btn-success run-code" type="button">Run</button>
     <button class="btn btn-small btn-primary save-code" type="button">Save</button>
+    <button class="btn btn-small btn-info show-examples" type="button">Show examples</button>
   </div>
 </template>
+
+<template name="examplesPopUp">
+  {{#if show}}
+    <div id="examplesPopUp" class="popUp">
+      <div class="dialog"><h4>See example tests running right away!</h4>
+        <button class="btn btn-small btn-default example-test" id="example-1">Amazon adventure</button> 
+        <button class="btn btn-small btn-default example-test" id="example-2">Flight to paradise</button>  
+        <button class="btn btn-small btn-default example-test" id="example-3">Seafood search</button>  
+        <button class="btn btn-small btn-primary close-examples" type="button">Close</button>
+        </div>
+      <div class="overlay"></div>
+    </div>
+  {{/if}}
+</template>
+
+

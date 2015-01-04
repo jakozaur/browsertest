@@ -15,5 +15,8 @@ Template.codeButtons.events({
     } else {
       Session.set('saveTestPopUp', true);
     }
-  }
+  },
+  'click .show-examples': function () {
+    Session.set('examplesPopUp', true);
+  },
 });
