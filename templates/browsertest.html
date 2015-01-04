@@ -5,7 +5,11 @@
     <div class="container-margin">
       <div class="row">
         <div class="col-md-6 col-lg-6">
-          <button class="btn btn-small recording" type="button">Start recording</button>
+          {{#if isRecording}}
+            <button class="btn btn-small recording-button stop-recording" type="button">Stop recording</button>
+          {{else}}
+            <button class="btn btn-small recording-button start-recording" type="button">Start recording</button>
+          {{/if}}
         </div>
         <div class="col-md-6 col-lg-6">
           {{#if testName}}

@@ -146,15 +146,21 @@ hr {
   padding: 5px 20px;
 }
 
-
-button.recording {
-  background-color: #e7e7e7;
+button.recording-button {
   border: 1px solid #777;
   margin-bottom: 10px;
   margin-left: -15px;
 }
 
-button.recording:hover, button.cancel:hover {
+button.start-recording {
+  background-color: #e7e7e7;
+}
+
+button.stop-recording {
+  background-color: #D45F50;
+}
+
+button.start-recording:hover, button.cancel:hover {
   background-color: #D6D6D6;
 }
 
@@ -171,9 +177,6 @@ button.cancel {
 .nameButtons button {
   margin-right: 15px;
 }
-
-/* once recording os on: background color D93925. Name on the button will
-be: Stop recording; */
 
 /* Lists */
 

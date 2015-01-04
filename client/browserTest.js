@@ -7,13 +7,25 @@ Template.browsertest.helpers({
     } else {
       return "";
     }
+  },
+  isRecording: function () {
+    var recordingId = Router.current().params.recordingId;
+    if (recordingId) {
+      return true;
+    } else {
+      return false;
+    }
   }
 });
 
 Template.browsertest.events({
-  'click .recording': function () {
+  'click .start-recording': function () {
     Meteor.call('recordTest', function (err, recordingId) {
       Router.go('app.recordingId', {recordingId: recordingId});
     });
+  },
+  'click .stop-recording': function () {
+    //TODO; stop Chrome 
+    Router.go('app');
   }
 });
