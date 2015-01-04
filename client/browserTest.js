@@ -12,6 +12,8 @@ Template.browsertest.helpers({
 
 Template.browsertest.events({
   'click .recording': function () {
-    Meteor.call('recordTest');
+    Meteor.call('recordTest', function (err, recordingId) {
+      Router.go('app.recordingId', {recordingId: recordingId});
+    });
   }
 });

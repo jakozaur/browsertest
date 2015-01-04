@@ -39,11 +39,25 @@ Template.code.rendered = function () {
 
   self.autorun(function () {
     var testId = Router.current().params.testId;
+    var recordingId = Router.current().params.recordingId;
     if (!codeMirror.hasFocus() && testId) {
+      codeMirror.setOption('readOnly', false);
+      codeMirror.setOption('theme', 'default');
+
       var test = Test.findOne(testId);
       if (test) {
         codeMirror.setValue(test.code);
       }
+    } else if (recordingId) {
+      var recording = Recording.findOne(recordingId) || {};
+      var events = recording.events || [];
+      var code = _.map(events, JSON.stringify).join("\n");
+      codeMirror.setOption('readOnly', true);
+      codeMirror.setOption('theme', 'base16-light');
+      codeMirror.setValue(code);
+    } else {
+      codeMirror.setOption('readOnly', false);
+      codeMirror.setOption('theme', 'default');
     }
   });
 };

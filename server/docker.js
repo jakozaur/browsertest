@@ -123,5 +123,7 @@ Meteor.methods({
     execCommand(containerId, ['su', '-', 'tests', '-c',
       'sleep 1; DISPLAY=:123 xdotool search --onlyvisible --class chrome windowfocus']);
     console.log("recordTest DONE");
+
+    return recordingId;
   }
 })
