@@ -18,10 +18,13 @@ CodeGen = function () {
       switch (events[i].type) {
         case 'url':
           lines.push("      .url(\"" + events[i].url + "\")");
+          lines.push("      .waitForElementVisible(\"body\", 1000)")
           break;
         case 'click':
           // TODO: smarter selector
-          lines.push("      .click(\"#" + events[i].path[0].id + "\")");
+          var selector = events[i].path[0].id;
+          lines.push("      .waitForElementVisible(\"" + selector + "\", 1000)")
+          lines.push("      .click(\"#" + selector + "\")");
           break;
         case 'keydown':
           // TODO: detect special keys
