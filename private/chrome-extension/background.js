@@ -48,7 +48,7 @@ chrome.webNavigation.onCommitted.addListener(function (details) {
     recorder.send({
       type: 'backward'
     });
-  } else if (details.transitionQualifiers.indexOf('from_address_bar') !== -1) {
+  } else if (details.transitionType === 'typed') {
     console.log("Typed new url", details.url, details);
     // TODO: recognize the original typed url, now we can have redirected one
     recorder.send({
