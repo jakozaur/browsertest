@@ -29,3 +29,10 @@ Template.browsertest.events({
     Router.go('app');
   }
 });
+
+
+
+
+
+
+
