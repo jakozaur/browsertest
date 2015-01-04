@@ -133,6 +133,14 @@ Meteor.methods({
   },
 
   stopBrowser: function () {
+    var containers = Meteor.wrapAsync(docker.listContainers, docker)();
+    console.log("Running containers", containers);
+    if (containers.length == 0) {
+      console.log("ERROR: need one container");
+      return;
+    }
+    var containerId = containers[0].Id;
+    
     console.log("stopChrome Close Chrome");
     execCommand(containerId, ['killall', 'chrome']);
   }
