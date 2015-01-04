@@ -43,4 +43,15 @@
     };
     chrome.runtime.sendMessage(exported);
   }, true);
+
+  window.addEventListener('keypress', function (event) {
+    log("BrowserTest keypress", event);
+    var exported = {
+      type: 'keypress',
+      charCode: event.charCode,
+      keyIdentifier: event.keyIdentifier,
+      path: exportPath(event)
+    };
+    chrome.runtime.sendMessage(exported);
+  }, true);
 }());

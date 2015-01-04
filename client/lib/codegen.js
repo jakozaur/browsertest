@@ -7,11 +7,15 @@ CodeGen = function () {
     return JSON.stringify(a[0]) === JSON.stringify(b[0]);
   }
 
-  self.eventsToNightwatch = function (events) {
+  self.eventsToNightwatch = function (originalEvents) {
     var lines = [];
     lines.push("module.exports = {");
     lines.push("  \"My awesome test\": function (browser) {");
     lines.push("    browser");
+
+    var events = _.filter(originalEvents, function(e) {
+      return e.type !== 'keydown';
+    });
 
     for (var i = 0 ; i < events.length ;) {
       var step = 1;
@@ -26,9 +30,10 @@ CodeGen = function () {
           lines.push("      .waitForElementVisible(\"" + selector + "\", 1000)")
           lines.push("      .click(\"#" + selector + "\")");
           break;
-        case 'keydown':
+        case 'keypress':
           // TODO: detect special keys
           while (i + step < events.length &&
+              events[i + step].type == 'keypress' &&
               pathEqual(events[i].path, events[i + step].path)) {
             step++;
           }
@@ -36,7 +41,7 @@ CodeGen = function () {
           for (var j = 0 ; j < step ; j++) {
             var keyIdentifier = events[i + j].keyIdentifier;
             keyCode = parseInt(keyIdentifier.substr(2), 16);
-            value += String.fromCharCode(keyCode);
+            value += String.fromCharCode(events[i + j].charCode);
           }
           // TODO: smarter selector
           lines.push("      .setValue(\"#" + events[i].path[0].id + "\", \"" +
