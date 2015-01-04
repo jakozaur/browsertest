@@ -77,6 +77,8 @@ Meteor.methods({
     execCommand(containerId, ['su', '-', 'tests', '-c', 'mkdir -p /home/tests/examples/tests']);
     console.log("Writing test");
     createFile(containerId, '/home/tests/examples/tests/test.js', code);
+    console.log("Make sure previous Chrome is closed");
+    execCommand(containerId, ['killall', 'chrome']);
     console.log("Running test");
     execCommand(containerId, ['su', '-', 'tests', '-c', 'cd /home/tests; nightwatch .'], runId);
     console.log("DONE");
@@ -113,6 +115,9 @@ Meteor.methods({
     createFile(containerId, '/home/tests/record/extension/settings.js',
       settings);
 
+    console.log("recordTest Make sure previous Chrome is closed");
+    execCommand(containerId, ['killall', 'chrome']);
+
     console.log("recordTest Starting Chrome");
     execCommand(containerId, ['su', '-', 'tests', '-c',
       'DISPLAY=:123 google-chrome --window-position=0,0 --window-size=1366,768 ' +
@@ -125,5 +130,10 @@ Meteor.methods({
     console.log("recordTest DONE");
 
     return recordingId;
+  },
+
+  stopBrowser: function () {
+    console.log("stopChrome Close Chrome");
+    execCommand(containerId, ['killall', 'chrome']);
   }
 })

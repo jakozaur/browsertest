@@ -25,7 +25,7 @@ Template.browsertest.events({
     });
   },
   'click .stop-recording': function () {
-    //TODO; stop Chrome 
+    Meteor.call('stopBrowser');
     Router.go('app');
   }
 });

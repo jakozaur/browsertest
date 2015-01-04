@@ -34,7 +34,15 @@ Template.code.rendered = function () {
   var self = this;
   codeMirror = CodeMirror.fromTextArea(this.find("#seleniumCode"), {
     mode: 'javascript',
+    tabSize: 2,
     lineNumbers: true
+  });
+
+  codeMirror.setOption('extraKeys', {
+    Tab: function(cm) {
+      var spaces = Array(cm.getOption('indentUnit') + 1).join(" ");
+      cm.replaceSelection(spaces);
+    }
   });
 
   self.autorun(function () {
