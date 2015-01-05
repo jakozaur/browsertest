@@ -38,11 +38,50 @@ Template.examplesPopUp.events({
         .end();\n\
   }\n\
 }");
+  },
+  'click #example-2': function () {
+    Session.set('examplesPopUp', false);
+    Router.go('app');
+    codeMirror.setValue("module.exports = {\n\
+        \'Search for awesome flight\': function (browser) {\n\
+          browser\n\
+            .url(\'https://www.hipmunk.com/\')\n\
+            .waitForElementVisible(\"body\", 1000)\n\
+            .pause(1000)\n\
+            .setValue(\"input[id=fac1flight]\", \"San Francisco\")\n\
+            .setValue(\"input[id=fac2flight]\", \"Beijing\")\n\
+            .pause(1000)\n\
+            .waitForElementVisible(\"input[id=date0-flight]\", 1000)\n\
+            .setValue(\"input[id=date0-flight]\", \"Jun 9\")\n\
+            .pause(1000)\n\
+            .waitForElementVisible(\"input[id=date1-flight]\", 1000)\n\
+            .setValue(\"input[id=date1-flight]\", \"Jun 29\")\n\
+            .pause(1000)\n\
+            .click(\"button[class=submit frontbox-search-button flat-button m-taller m-more-padding m-bold m-orange]\")\n\
+            .end();\n\
+          }\n\
+        }")
+  }, 
+  'click #example-3': function () {
+    Session.set('examplesPopUp', false);
+    Router.go('app');
+    codeMirror.setValue("module.exports = {\n\
+      \"Seafood search\": function (client) {\n\
+        client\n\
+          .url(\"http://www.yelp.com/\")\n\
+          .waitForElementVisible(\"body\", 1000)\n\
+          .assert.visible(\"input[name=find_desc]\")\n\
+          .assert.visible(\"input[name=find_loc]\")\n\
+          .setValue(\"input[name=find_desc]\", \"seafood\")\n\
+          .waitForElementVisible(\"button[id=header-search-submit]\", 1000)\n\
+          .click(\"button[id=header-search-submit]\")\n\
+          .pause(3000)\n\
+          .assert.containsText(\".container\", \"seafood\")\n\
+          .end();\n\
+        }\n\
+      }")
   }
 }); 
-
-
-
 
 
 
