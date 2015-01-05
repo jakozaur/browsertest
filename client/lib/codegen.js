@@ -17,10 +17,10 @@ CodeGen = function () {
       } else {
         if (node.className) {
           result.push("." + node.className.split(" ").join(".") +
-            ":nth-child(" + node.childIndex + ")");
+            ":nth-child(" + (node.childIndex + 1) + ")");
         } else {
           result.push(node.tagName.toLowerCase() +
-            ":nth-child(" + node.childIndex + ")");
+            ":nth-child(" + (node.childIndex + 1) + ")");
         }
       }
     }
@@ -67,6 +67,7 @@ CodeGen = function () {
           lines.push("      .waitForElementVisible(\"body\", 1000)")
           break;
         case 'click':
+          if (events[i].x == 0 && events[i].y == 0) break; // likely by library
           var selector = generateSelector(events[i]);
           lines.push("      .waitForElementVisible(\"" + selector + "\", 1000)")
           lines.push("      .click(\"" + selector + "\")");
