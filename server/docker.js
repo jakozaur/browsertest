@@ -74,12 +74,12 @@ Meteor.methods({
     }
     var containerId = containers[0].Id;
 
+    console.log("Make sure previous Chrome is closed");
+    execCommand(containerId, ['killall', 'chrome', 'chromedriver', 'cat']);
     console.log("Creating dir");
     execCommand(containerId, ['su', '-', 'tests', '-c', 'mkdir -p /home/tests/examples/tests']);
     console.log("Writing test");
     createFile(containerId, '/home/tests/examples/tests/test.js', code);
-    console.log("Make sure previous Chrome is closed");
-    execCommand(containerId, ['killall', 'chrome']);
     console.log("Running test");
     execCommand(containerId, ['su', '-', 'tests', '-c', 'cd /home/tests; nightwatch .'], runId);
     console.log("DONE");
@@ -103,6 +103,10 @@ Meteor.methods({
     }
     var containerId = containers[0].Id;
 
+
+    console.log("recordTest Make sure previous Chrome is closed");
+    execCommand(containerId, ['killall', 'chrome', 'chromedriver', 'cat']);
+
     console.log("recordTest Copying chrome extension");
     execCommand(containerId, ['su', '-', 'tests', '-c',
       'mkdir -p /home/tests/record/extension']);
@@ -119,8 +123,6 @@ Meteor.methods({
     createFile(containerId, '/home/tests/record/extension/settings.js',
       settings);
 
-    console.log("recordTest Make sure previous Chrome is closed");
-    execCommand(containerId, ['killall', 'chrome']);
 
     console.log("recordTest Starting Chrome");
     execCommand(containerId, ['su', '-', 'tests', '-c',
@@ -146,6 +148,6 @@ Meteor.methods({
     var containerId = containers[0].Id;
 
     console.log("stopChrome Close Chrome");
-    execCommand(containerId, ['killall', 'chrome']);
+    execCommand(containerId, ['killall', 'chrome', 'chromedriver', 'cat']);
   }
 })
