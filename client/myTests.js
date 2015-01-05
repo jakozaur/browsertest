@@ -1,7 +1,12 @@
 Template.myTests.helpers({
   tests: function () {
     if (Meteor.userId()) {
-      return Test.find({userId: Meteor.userId()}).fetch();
+      return Test.find({userId: Meteor.userId()}, {
+        sort: ['name']
+      }).map(function (test, index) {
+        test.index = index;
+        return test;
+      });
     } else {
       return [];
     }
@@ -18,7 +23,7 @@ Template.myTests.events({
   'click .delete': function (event, tmpl) {
     var testId = tmpl.$('input[type=radio]:checked').attr('id');
     if (testId) {
-      Test.remove(testId); 
+      Test.remove(testId);
     }
   },
   'click .run': function (event, tmpl) {
@@ -33,10 +38,12 @@ Template.myTests.events({
   }
 });
 
-Template.myTestsItem.events({
-  'click .edit': function () {
-    Router.go('app.testId', {testId: this._id})
+Template.myTestsItem.helpers({
+  checked: function () {
+    if (this.index === 0) {
+      return 'checked';
+    } else {
+      return false;
+    }
   }
 });
-
-
