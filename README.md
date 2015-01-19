@@ -35,14 +35,6 @@ In new terminal tab: (any folder)
 7. Verify with `docker logs [id-from-previous-step]`
 
 
-### Setup the temporary package
-In new tab: (in separate folder)
-
-1. `git clone https://github.com/jakozaur/meteor-dockerode.git`
-2. `cd [meteor-app]`
-3. `mkdir packages`
-4. `ln -s ../meteor-dockerode packages/ongoworks:dockerrode`
-
 Run the project
 ===============
 `meteor --settings settings.json`
