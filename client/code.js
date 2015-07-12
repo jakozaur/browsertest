@@ -8,6 +8,7 @@ module.exports = {\n\
     browser\n\
       .url('http://www.google.com')\n\
       .waitForElementVisible('body', 1000)\n\
+      .saveScreenshot('test.png')\n\
       .setValue('input[type=text]', 'nightwatch')\n\
       .waitForElementVisible('button[name=btnG]', 1000)\n\
       .click('button[name=btnG]')\n\

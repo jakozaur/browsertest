@@ -57,6 +57,16 @@ exampleExec = function () {
   createFile(containers[0].Id, 'meteor-g', "Hello Docker!");
 };
 
+var findScreenshots = function (code) {
+  var screenshotRegex = new RegExp("\\.saveScreenshot\\('(.+?\\.png)'\\)", 'g');
+  var matchResult;
+  var result = [];
+  while ((matchResult = screenshotRegex.exec(code)) !== null) {
+    result.push(matchResult[1]);
+  }
+  return result;
+}
+
 Meteor.methods({
   runCode: function (code) {
     console.log("runCode", code);
@@ -73,6 +83,8 @@ Meteor.methods({
       return;
     }
     var containerId = containers[0].Id;
+
+    console.log(findScreenshots(code));
 
     console.log("Make sure previous Chrome is closed");
     execCommand(containerId, ['killall', 'chrome', 'chromedriver', 'cat']);
