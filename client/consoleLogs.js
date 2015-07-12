@@ -13,5 +13,22 @@ Template.consoleLogs.helpers({
     } else {
       return "";
     }
+  },
+  screenshots: function() {
+    var runId = Session.get('runId');
+    var run = Run.findOne(runId);
+    if (run) {
+      var result = [];
+      _.each(run.screenshots || [], function (id) {
+        var image = Images.findOne(id);
+        if (image) {
+          result.push(image);
+        }
+      });
+      return result;
+    } else {
+      return [];
+    }
   }
+
 });

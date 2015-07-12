@@ -27,3 +27,18 @@ var onlyOwnerCanChange = {
 }
 
 Test.allow(onlyOwnerCanChange);
+
+Images.allow({ // TODO: Make more strict!
+ insert: function(){
+   return true;
+ },
+ update: function(){
+   return true;
+ },
+ remove: function(){
+   return true;
+ },
+ download: function(){
+   return true;
+ }
+});

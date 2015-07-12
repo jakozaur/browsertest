@@ -15,3 +15,5 @@ jakozaur:ansi-up
 accounts-github
 accounts-ui
 accounts-password
+cfs:standard-packages
+cfs:gridfs

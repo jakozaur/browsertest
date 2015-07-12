@@ -39,8 +39,21 @@ var readFile = function (containerId, filePath) {
   return Meteor.wrapAsync(function (callback) {
     var result = [];
     var stream = Meteor.wrapAsync(execCmd.start, execCmd)();
-    stream.on('data', Meteor.bindEnvironment(function (msg) {
-      result.push(msg);
+
+    // Docker mixes stdout and stderr:
+    // https://docs.docker.com/reference/api/docker_remote_api_v1.14/#attach-to-a-container
+    var header = null;
+    stream.on('readable', Meteor.bindEnvironment(function() {
+      header = header || stream.read(8);
+      while (header !== null) {
+        var type = header.readUInt8(0);
+        var payload = stream.read(header.readUInt32BE(4));
+        if (payload === null) break;
+        if (type == 1) {
+          result.push(payload);
+        }
+        header = stream.read(8);
+      }
     }));
 
     stream.on('end', Meteor.bindEnvironment(function () {
@@ -65,10 +78,19 @@ var execCommand = function (containerId, cmd, options) {
 
   var stream = Meteor.wrapAsync(execCmd.start, execCmd)();
   if (runId) {
-    stream.on('data', Meteor.bindEnvironment(function (msg) {
-      Run.update(runId, {$push: {logs: msg.toString('utf-8')}});
+    // Docker mixes stdout and stderr:
+    // https://docs.docker.com/reference/api/docker_remote_api_v1.14/#attach-to-a-container
+    var header = null;
+    stream.on('readable', Meteor.bindEnvironment(function () {
+      header = header || stream.read(8);
+      while (header !== null) {
+        var type = header.readUInt8(0);
+        var payload = stream.read(header.readUInt32BE(4));
+        if (payload === null) break;
+        Run.update(runId, {$push: {logs: payload.toString('utf-8')}});
+        header = stream.read(8);
+      }
     }));
-
   } else {
     stream.pipe(process.stdout);
   }
@@ -128,9 +150,21 @@ Meteor.methods({
     execCommand(containerId, ['su', '-', 'tests', '-c', 'cd /home/tests; nightwatch .'], {
       runId: runId,
       callback: function () {
-        _.each(screenshots, function (el) {
-          var file = readFile(containerId, el);
-          console.log(el + " buffer.length: " + file.length);
+        _.each(screenshots, function (imageName) {
+          var buffer = readFile(containerId, imageName);
+          console.log(imageName + " buffer.length: " + buffer.length);
+          var newFile = new FS.File();
+          newFile.name(imageName);
+          newFile.attachData(buffer, {type: 'image/png'});
+          console.log("Data attached " + imageName);
+          var image = Images.insert(newFile);
+          console.log("Image inserted " + imageName);
+          console.log(image);
+
+          //Run.update(runId, {$push: {screenshots: {image: image, name: imageName}}});
+          Run.update(runId, {$push: {screenshots: image._id}});
+
+
         });
 
         Run.update(runId, {$push: {logs: "Saving screenshots: " + screenshots}});

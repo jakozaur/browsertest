@@ -9,3 +9,7 @@ Meteor.publish('myRecording', function (userId, recordingId) {
 Meteor.publish('myRun', function (userId, runId) {
   return Run.find({_id: runId, userId: this.userId});
 });
+
+Meteor.publish(null, function () {
+  return Images.find();
+});

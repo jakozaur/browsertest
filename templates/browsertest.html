@@ -102,6 +102,10 @@
   <div class="consoleLogs">
     <h4>Console logs</h4>
     {{{ logLines }}}
+    <br/>
+    {{#each screenshots}}
+      <img src="{{ this.url }}">
+    {{/each}}
   </div>
 </template>
 
