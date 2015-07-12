@@ -10,7 +10,7 @@ docker = new Docker({
   key: fs.readFileSync(certPath + 'key.pem')
 });
 
-var createFile = function (containerId, filePath, fileContent) {
+var writeFile = function (containerId, filePath, fileContent) {
   var container = docker.getContainer(containerId);
 
   var execCmd = Meteor.wrapAsync(container.exec, container)({
@@ -26,7 +26,34 @@ var createFile = function (containerId, filePath, fileContent) {
   stream.end();
 };
 
-var execCommand = function (containerId, cmd, runId) {
+var readFile = function (containerId, filePath) {
+  // TODO: Handle non-existing files!
+  var container = docker.getContainer(containerId);
+
+  var execCmd = Meteor.wrapAsync(container.exec, container)({
+    AttachStdout: true,
+    Tty: false,
+    Cmd: ['su', '-', 'tests', '-c', 'cat ' + filePath]
+  });
+
+  return Meteor.wrapAsync(function (callback) {
+    var result = [];
+    var stream = Meteor.wrapAsync(execCmd.start, execCmd)();
+    stream.on('data', Meteor.bindEnvironment(function (msg) {
+      result.push(msg);
+    }));
+
+    stream.on('end', Meteor.bindEnvironment(function () {
+      callback(null, Buffer.concat(result));
+    }));
+  })();
+};
+
+var execCommand = function (containerId, cmd, options) {
+  options = options || {};
+  var runId = options.runId;
+  var callback = options.callback;
+
   var container = docker.getContainer(containerId);
 
   var execCmd = Meteor.wrapAsync(container.exec, container)({
@@ -41,8 +68,13 @@ var execCommand = function (containerId, cmd, runId) {
     stream.on('data', Meteor.bindEnvironment(function (msg) {
       Run.update(runId, {$push: {logs: msg.toString('utf-8')}});
     }));
+
   } else {
     stream.pipe(process.stdout);
+  }
+
+  if (callback) {
+    stream.on('end', Meteor.bindEnvironment(callback));
   }
 }
 
@@ -54,7 +86,7 @@ exampleExec = function () {
     return;
   }
 
-  createFile(containers[0].Id, 'meteor-g', "Hello Docker!");
+  writeFile(containers[0].Id, 'meteor-g', "Hello Docker!");
 };
 
 var findScreenshots = function (code) {
@@ -84,16 +116,26 @@ Meteor.methods({
     }
     var containerId = containers[0].Id;
 
-    console.log(findScreenshots(code));
+    var screenshots = findScreenshots(code);
 
     console.log("Make sure previous Chrome is closed");
     execCommand(containerId, ['killall', 'chrome', 'chromedriver', 'cat']);
     console.log("Creating dir");
     execCommand(containerId, ['su', '-', 'tests', '-c', 'mkdir -p /home/tests/examples/tests']);
     console.log("Writing test");
-    createFile(containerId, '/home/tests/examples/tests/test.js', code);
+    writeFile(containerId, '/home/tests/examples/tests/test.js', code);
     console.log("Running test");
-    execCommand(containerId, ['su', '-', 'tests', '-c', 'cd /home/tests; nightwatch .'], runId);
+    execCommand(containerId, ['su', '-', 'tests', '-c', 'cd /home/tests; nightwatch .'], {
+      runId: runId,
+      callback: function () {
+        _.each(screenshots, function (el) {
+          var file = readFile(containerId, el);
+          console.log(el + " buffer.length: " + file.length);
+        });
+
+        Run.update(runId, {$push: {logs: "Saving screenshots: " + screenshots}});
+      }
+    });
     console.log("DONE");
 
     return runId;
@@ -123,7 +165,7 @@ Meteor.methods({
     execCommand(containerId, ['su', '-', 'tests', '-c',
       'mkdir -p /home/tests/record/extension']);
     _.each(['background.js', 'foreground.js', 'manifest.json'], function (el) {
-      createFile(containerId, '/home/tests/record/extension/' + el,
+      writeFile(containerId, '/home/tests/record/extension/' + el,
         Assets.getText('chrome-extension/' + el));
     });
 
@@ -132,7 +174,7 @@ Meteor.methods({
       meteorUrl: Meteor.settings.meteor.localUrl,
       testId: recordingId
     }) + ";";
-    createFile(containerId, '/home/tests/record/extension/settings.js',
+    writeFile(containerId, '/home/tests/record/extension/settings.js',
       settings);
 
 
