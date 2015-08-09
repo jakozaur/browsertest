@@ -13,6 +13,7 @@ Template.examplesPopUp.events({
   },
   'click #example-1': function () {
     Session.set('examplesPopUp', false);
+    Session.set('runId', null);
     Router.go('app');
     codeMirror.setValue("module.exports = {\n\
   \'Search on Amazon\': function (browser) {\n\
@@ -43,6 +44,7 @@ Template.examplesPopUp.events({
   },
   'click #example-2': function () {
     Session.set('examplesPopUp', false);
+    Session.set('runId', null);
     Router.go('app');
     codeMirror.setValue("module.exports = {\n\
   \'Search for awesome flight\': function (browser) {\n\
@@ -71,6 +73,7 @@ Template.examplesPopUp.events({
   },
   'click #example-3': function () {
     Session.set('examplesPopUp', false);
+    Session.set('runId', null);
     Router.go('app');
     codeMirror.setValue("module.exports = {\n\
   \"Seafood search\": function (browser) {\n\

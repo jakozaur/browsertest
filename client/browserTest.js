@@ -21,6 +21,7 @@ Template.browsertest.helpers({
 Template.browsertest.events({
   'click .start-recording': function () {
     Meteor.call('recordTest', function (err, recordingId) {
+      Session.set('runId', null);
       Router.go('app.recordingId', {recordingId: recordingId});
     });
   },
@@ -29,10 +30,3 @@ Template.browsertest.events({
     Router.go('app');
   }
 });
-
-
-
-
-
-
-

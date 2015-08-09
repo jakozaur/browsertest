@@ -151,6 +151,7 @@ Meteor.methods({
       runId: runId,
       callback: function () {
         _.each(screenshots, function (imageName) {
+          console.log("Saving screenshot: " + imageName);
           var buffer = readFile(containerId, imageName);
           console.log(imageName + " buffer.length: " + buffer.length);
           var newFile = new FS.File();
