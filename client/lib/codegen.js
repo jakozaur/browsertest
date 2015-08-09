@@ -15,11 +15,15 @@ CodeGen = function () {
         result.push("#" + node.id);
         break;
       } else {
+        if (node.tagName.toLowerCase() == "body") {
+          result.push("body");
+          break;
+        }
         if (node.className) {
           result.push("." + node.className.split(" ").join(".") +
             ":nth-child(" + (node.childIndex + 1) + ")");
         } else {
-          result.push(node.tagName.toLowerCase() +
+          result.push(node.tagName +
             ":nth-child(" + (node.childIndex + 1) + ")");
         }
       }
