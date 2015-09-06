@@ -30,6 +30,7 @@ In new terminal tab: (any folder)
 }
 
 ```
+Note! the certPath value should match result of `echo $DOCKER_CERT_PATH`
 4. `boot2docker ssh`
 5. `docker pull jakozaur/docker-selenium:v1.3`
 6. `docker run -p 4444:4444 -p 5555:5555 -d jakozaur/docker-selenium:v1.3`
