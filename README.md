@@ -15,7 +15,7 @@ In new terminal tab: (any folder)
 
 1. `boot2docker init`
 2. `boot2docker up`
-3. Create `browsertest/settings.json` with settings based on previous step output (Note! the certPath value should match result of `echo $DOCKER_CERT_PATH`)
+3. Create `browsertest/settings.json` with settings based on previous step output 
 ```
 {
   "docker": {
