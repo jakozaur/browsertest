@@ -6,15 +6,16 @@ Setup
 =====
 
 1. Install [Meteor](https://www.meteor.com/install).
-2. Install [Boot2Docker](https://github.com/boot2docker/osx-installer/releases).
+2. Install [Docker Toolbox](https://www.docker.com/toolbox).
 3. Clone this repository: `git clone git@github.com:jakozaur/browsertest.git`.
+4. Install Virtualbox (v4.3.30 works)
 
 ### Docker setup
 In new terminal tab: (any folder)
 
 1. `boot2docker init`
 2. `boot2docker up`
-3. Create `browsertest/setting.json` with settings based on previous step output:
+3. Create `browsertest/settings.json` with settings based on previous step output:
 ```
 {
   "docker": {
