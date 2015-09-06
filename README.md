@@ -15,7 +15,7 @@ In new terminal tab: (any folder)
 
 1. `boot2docker init`
 2. `boot2docker up`
-3. Create `browsertest/settings.json` with settings based on previous step output:
+3. Create `browsertest/settings.json` with settings based on previous step output (Note! the certPath value should match result of `echo $DOCKER_CERT_PATH`)
 ```
 {
   "docker": {
@@ -30,7 +30,6 @@ In new terminal tab: (any folder)
 }
 
 ```
-Note! the certPath value should match result of `echo $DOCKER_CERT_PATH`
 4. `boot2docker ssh`
 5. `docker pull jakozaur/docker-selenium:v1.3`
 6. `docker run -p 4444:4444 -p 5555:5555 -d jakozaur/docker-selenium:v1.3`
